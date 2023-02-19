@@ -147,8 +147,10 @@ class NullTransformer():
             isna = np.random.random((len(data), )) < self._null_percentage
 
         data = pd.Series(data)
-
-        if self.nulls and isna.any():
-            data.loc[isna] = np.nan
+        ## I commented this part as a temporary solution 
+        ## I need the need to not model the missing values with an additional column, and also not inserting nan randomly 
+        ## for time constraint I haven't looked for other solutions
+        #if self.nulls and isna.any():
+        #    data.loc[isna] = np.nan
 
         return data
